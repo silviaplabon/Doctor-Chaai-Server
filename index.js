@@ -1,23 +1,17 @@
+// require packages
 const express = require('express')
-const app = express()
+const mongoose = require('mongoose')
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config()
+
+// use packages
+const app = express()
 app.use(cors());
 app.use(bodyParser.json());
 
 
-const port = process.env.PORT || 4200;
-const ObjectID = require('mongodb').ObjectID;
-const MongoClient = require('mongodb').MongoClient;
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.mcsxh.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const AppointmentsCollection = client.db('Doctors_Chaai').collection("PatientsAppointmentsCollection");
-  
-  
-  })
-  
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
