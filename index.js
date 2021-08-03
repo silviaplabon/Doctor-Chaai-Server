@@ -14,7 +14,15 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const AppointmentsCollection = client.db('Doctors_Chaai').collection("PatientsAppointmentsCollection");
-  
+  const AllDoctorsCollection = client.db('Doctors_Chaai').collection("PatientsAppointmentsCollection");
+
+
+  app.get('/allDoctorsCollection/Show', (req, res) => {
+    AllDoctorsCollection.find({})
+      .toArray((err, products) => {
+        res.send(products)
+      })
+  })
   
   })
   
