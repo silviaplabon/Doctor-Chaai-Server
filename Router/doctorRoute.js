@@ -13,6 +13,9 @@ const addDoctor = new mongoose.model('addDoctor', addDoctorSchema);
 router.get('/', async(req, res) => {
     try{
         const doctor = await addDoctor.find({})
+            .select({
+                date: 0
+            })
         res.status(200).json({
             result: doctor,
             message: "success"
