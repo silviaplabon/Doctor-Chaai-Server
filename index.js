@@ -17,12 +17,12 @@ const port = 3000;
 
 // db connection with mongoose
 mongoose
-  .connect(`mongodb://localhost/doctor`, {
+  .connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.cau0x.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log(`connection successfully`);
+    console.log(`connection successful with Database`);
   })
   .catch((err) => console.log(err));
 
