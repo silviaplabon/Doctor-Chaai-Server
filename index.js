@@ -5,6 +5,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 const doctorRoute = require("./Router/doctorRoute");
+const doctorAppointmentRoute = require("./Router/doctorAppointmentRoute");
 
 // use packages
 const app = express();
@@ -29,6 +30,9 @@ mongoose
 
 // for doctor routes
 app.use("/doctor", doctorRoute);
+
+// Appointment route
+app.use("/appointment", doctorAppointmentRoute)
 
 app.get('/', async(req, res) => {
   try{
