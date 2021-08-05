@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv")
 const doctorRoute = require("./Router/doctorRoute");
 const userRoute = require("./Router/userRoute");
+const doctorAppointmentRoute = require("./Router/doctorAppointmentRoute");
+
 
 // use packages
 const app = express();
@@ -15,9 +17,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 //define port
-const port = 3000;
+const port = 4300;
 
-// db connection with mongoose
+
 mongoose
   .connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.cau0x.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
@@ -26,12 +28,15 @@ mongoose
   .then(() => {
     console.log(`connection successful with Database`);
   })
-  .catch((err) => console.log(err));
+  .catch((err) => console.log(err,"silvia"));
 
 
 // for doctor routes
 app.use("/doctor", doctorRoute);
 app.use("/user", userRoute);
+
+// Appointment route
+app.use("/appointment", doctorAppointmentRoute)
 
 app.get('/', async(req, res) => {
   try{
@@ -53,5 +58,4 @@ app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
-});
-
+}
