@@ -7,27 +7,22 @@ const addDoctorSchema = mongoose.Schema({
         type: String, 
         required: true
     },
-
+    phone:{
+        type: Number, 
+        required: true
+    },
     address : {
         type: String, 
         required: true
     },
-
-    city : {
-        type: String,
-        required: true
-    },
-
     experience : {
-        type: Number, 
+        type: String, 
         required: true,
     },
-
     about : {
         type: String, 
         required: true
     },
-
     photo : {
         type: String, 
         required: true,
