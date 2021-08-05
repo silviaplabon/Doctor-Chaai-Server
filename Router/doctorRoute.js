@@ -3,15 +3,17 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const addDoctorSchema = require('../schemas/addDoctorSchema');
-
+const loginGuard = require('../middlewares/loginGuard')
 // use
 
 const addDoctor = new mongoose.model('addDoctor', addDoctorSchema);
 
 // add a doctor 
 
-router.get('/', async(req, res) => {
+router.get('/', loginGuard, async(req, res) => {
     try{
+        console.log(req.userId);
+        console.log(req.username);
         const doctor = await addDoctor.find({})
             .select({
                 date: 0
