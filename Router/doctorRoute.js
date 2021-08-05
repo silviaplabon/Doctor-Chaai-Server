@@ -47,5 +47,21 @@ router.post('/addDoctor', async(req, res) => {
     }
 })
 
+router.get('/searchDoctor/:name', async (req, res) => {
+    try{
+        const params = req.params.name;
+        const doctor = await  addDoctor.find({name: {$regex:params, $options:"i"}})
+        res.status(200).json({
+            result: doctor,
+            message: "success"
+
+        })
+    }catch{
+        res.status(500).json({
+            error: "There was a server side error!",
+        })
+    }
+})
+
 module.exports = router;
 
