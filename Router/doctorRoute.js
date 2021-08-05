@@ -10,7 +10,7 @@ const addDoctor = new mongoose.model('addDoctor', addDoctorSchema);
 
 // add a doctor 
 
-router.get('/', loginGuard, async(req, res) => {
+router.get('/', async(req, res) => {
     try{
         console.log(req.userId);
         console.log(req.username);
