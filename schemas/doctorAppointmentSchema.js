@@ -16,12 +16,7 @@ const doctorAppointmentSchema = mongoose.Schema({
         type: String,
         require: true
     },
-
-    doctors: {
-        type: String,
-        require : true
-    },
-
+    
     date: {
         type: Date,
         default:  Date.now
