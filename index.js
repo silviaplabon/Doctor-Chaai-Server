@@ -28,11 +28,12 @@ mongoose
   .then(() => {
     console.log(`connection successful with Database`);
   })
-  .catch((err) => console.log(err,"silvia"));
+  .catch((err) => console.log(err));
 
 
 // for doctor routes
 app.use("/doctor", doctorRoute);
+// login route
 app.use("/user", userRoute);
 
 // Appointment route
@@ -58,4 +59,4 @@ app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
-}
+})
