@@ -10,8 +10,10 @@ const loginGuard = (req, res, next) => {
         req.userId = userId;
         next();
     } catch{
-        next("Authentication Error!     ")
+        next("Authentication Error!")
     }
 };
 
 module.exports = loginGuard;
+
+

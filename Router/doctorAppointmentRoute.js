@@ -2,7 +2,6 @@ const express = require ('express');
 const router = express.Router();
 const mongoose = require ('mongoose');
 const doctorAppointmentSchema = require ('../schemas/doctorAppointmentSchema');
-
 const doctorAppointment = new mongoose.model('doctorAppointment', doctorAppointmentSchema);
 
 router.get('/', async (req, res) => {
@@ -26,7 +25,7 @@ router.get('/', async (req, res) => {
 router.post('/doctorAppointment', async (req, res) => {
 
     try {
-        const doctorAppointment = await new doctorAppointment (req.body)
+        const doctorAppointment = await new doctorAppointment(req.body)
         doctorAppointment.save();
 
         res.status(200).json({
