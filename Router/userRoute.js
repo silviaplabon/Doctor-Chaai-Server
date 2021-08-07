@@ -14,7 +14,7 @@ router.post("/signup", async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const newUser = await new User({
       name: req.body.name,
-      username: req.body.username,
+      email: req.body.email,
       password: hashedPassword,
     });
     await newUser.save();
@@ -30,7 +30,7 @@ router.post("/signup", async (req, res) => {
 
 router.post('/login', async (req,res) => {
     try{
-        const user = await User.find({username: req.body.username});
+        const user = await User.find({email: req.body.email});
         console.log(user);
         if ( user && user.length > 0 ) {
             const isValidPassword = await bcrypt.compare(req.body.password, user[0].password)
