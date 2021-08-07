@@ -10,7 +10,7 @@ const addDoctor = new mongoose.model('addDoctor', addDoctorSchema);
 
 // add a doctor 
 
-router.get('/', loginGuard, async(req, res) => {
+router.get('/', async(req, res) => {
     try{
         console.log(req.userId);
         console.log(req.username);
@@ -42,7 +42,7 @@ router.post('/addDoctor', loginGuard,  async(req, res) => {
         })
     }catch(err){
         res.status(500).json({
-            error: "There was a server side error!",
+            error: "There was a server side err !",
         });
     }
 })
