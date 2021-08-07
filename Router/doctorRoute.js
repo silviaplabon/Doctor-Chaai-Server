@@ -33,7 +33,7 @@ router.get('/', loginGuard, async(req, res) => {
 
 // post a doctor 
 
-router.post('/addDoctor', async(req, res) => {
+router.post('/addDoctor', loginGuard,  async(req, res) => {
     try{
         const newDoctor = await new addDoctor(req.body);
         newDoctor.save();
